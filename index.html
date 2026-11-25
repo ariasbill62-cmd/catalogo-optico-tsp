@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Óptica Virtual TSP – Catálogo de Gafas</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Óptica Virtual TSP</h1>
+      <small id="sesionEstado">Invitado – Inicia sesión o regístrate para comprar</small>
+    </div>
+    <div class="acciones-top">
+      <button id="btnAuth">Registro / Login</button>
+      <button id="btnCarrito">Carrito (<span id="contadorCarrito">0</span>)</button>
+    </div>
+  </header>
+
+  <section class="filtros">
+    <input type="text" id="busquedaBasica" placeholder="Buscar por nombre o referencia..." />
+    <select id="filtroCategoria">
+      <option value="">Todas las categorías</option>
+      <option value="Oftálmicas">Oftálmicas</option>
+      <option value="Sol">Sol</option>
+      <option value="Filtro Luz Azul">Filtro Luz Azul</option>
+      <option value="Deportivas">Deportivas</option>
+      <option value="Accesorios">Accesorios</option>
+    </select>
+    <select id="filtroMarca">
+      <option value="">Todas las marcas</option>
+      <option value="ZeissStyle">ZeissStyle</option>
+      <option value="SolarPro">SolarPro</option>
+      <option value="BlueGuard">BlueGuard</option>
+      <option value="AeroFit">AeroFit</option>
+    </select>
+    <input type="number" id="filtroPrecioMax" placeholder="Precio máx. ($)" min="0" />
+    <button id="btnLimpiar">Limpiar</button>
+  </section>
+
+  <main>
+    <p id="resumenResultados"></p>
+    <div id="catalogo" class="grid-catalogo"></div>
+  </main>
+
+  <!-- Modal Detalle Ampliado de Gafa -->
+  <div id="modalDetalle" class="modal oculto">
+    <div class="modal-box">
+      <button class="cerrar" data-cerrar="modalDetalle">✕</button>
+      <div id="contenidoDetalle"></div>
+    </div>
+  </div>
+
+  <!-- Modal Carrito de Compras -->
+  <div id="modalCarrito" class="modal oculto">
+    <div class="modal-box">
+      <button class="cerrar" data-cerrar="modalCarrito">✕</button>
+      <h2>Carrito de Compras</h2>
+      <div id="itemsCarrito"></div>
+      <p><strong>Total a pagar: $<span id="totalCarrito">0</span></strong></p>
+      <button id="btnConfirmarCarrito">Confirmar compra del carrito</button>
+    </div>
+  </div>
+
+  <!-- Modal Registro e Inicio de Sesión -->
+  <div id="modalAuth" class="modal oculto">
+    <div class="modal-box">
+      <button class="cerrar" data-cerrar="modalAuth">✕</button>
+      <h2>Registro / Inicio de Sesión</h2>
+      <form id="formRegistro">
+        <h3>Crear cuenta</h3>
+        <input type="text" id="regNombre" placeholder="Nombre completo" required />
+        <input type="email" id="regCorreo" placeholder="Correo electrónico" required />
+        <input type="password" id="regClave" placeholder="Contraseña (mín. 4 caracteres)" required />
+        <button type="submit">Registrarse</button>
+      </form>
+      <hr />
+      <form id="formLogin">
+        <h3>Iniciar sesión</h3>
+        <input type="email" id="loginCorreo" placeholder="Correo electrónico" required />
+        <input type="password" id="loginClave" placeholder="Contraseña" required />
+        <button type="submit">Entrar</button>
+      </form>
+      <button id="btnLogout" class="oculto">Cerrar sesión</button>
+      <p id="mensajeAuth"></p>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
